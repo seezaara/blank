@@ -13,7 +13,7 @@ const Blank = (function () {
     }
 
     function getNextId() {
-        return (history.state?.id || 0) + 1;
+        return (history.state ? history.state.id : 0) + 1;
     }
 
     function getLastId() {

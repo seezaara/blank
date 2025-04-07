@@ -1,7 +1,7 @@
 const Blank = (function () {
     const ids = [];
     const handlers = {};
-    const urls = {};  
+    const urls = {};
     let pendingReplace = false;     // Internal marker to track programmatic backs
     let isHandlingPop = false;
 
@@ -26,11 +26,7 @@ const Blank = (function () {
         ids.push(nextId);
         handlers[nextId] = onBackCallback;
         urls[nextId] = location.pathname;
-
-        setTimeout(() => {
-            console.log(ids, { id: nextId });
-            history.pushState({ id: nextId }, "", location.pathname);
-        }, 0);
+        history.pushState({ id: nextId }, "", location.pathname);
         return nextId;
     }
 
@@ -52,9 +48,9 @@ const Blank = (function () {
 
     window.addEventListener("popstate", function () {
         if (isHandlingPop) return;
-        isHandlingPop = true; 
-        const stateid = (history.state.id || 0) + 1; 
-        if (stateid > 0 && ids.includes(stateid)) { 
+        isHandlingPop = true;
+        const stateid = (history.state.id || 0) + 1;
+        if (stateid > 0 && ids.includes(stateid)) {
             const handler = handlers[stateid];
             // Remove from our own stack
             ids.pop();
@@ -70,7 +66,7 @@ const Blank = (function () {
             if (typeof handler === "function") {
                 handler(false);
             }
-        }  
+        }
         setTimeout(() => {
             isHandlingPop = false;
         }, 0);

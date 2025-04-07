@@ -5,7 +5,7 @@
 **Blank** helps you control what happens when someone clicks the **back button** in their browser.
 
 This is useful when::
-- You need very lite plugin
+- You need very lite plugin (1kb)
 - You don’t want users to accidentally leave the page
 - You want to show a "back" action inside a modal, menu, or custom UI
 - You need full control over the back button for better user experience
